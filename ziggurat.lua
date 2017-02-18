@@ -8,16 +8,16 @@ local ziggurat_rarity = 20  -- 20
 local biome_rarity = 5  -- 5
 
 -- ziggurat stone
-newnode = zigg_mod.clone_node("default:sandstone")
-newnode.description = "Pyramid Stone"
+newnode = zigg_mod.clone_node("default:mossy_cobble")
+newnode.description = "Temple Stone"
 newnode.tiles = {'zigg_ziggurat_stone.png'}
 newnode.groups.ziggurat = 1
-newnode.drop = 'default:sandstone'
+newnode.drop = 'default:stick'
 minetest.register_node("zigg:ziggurat_1", newnode)
 
 
 local ziggurat_biomes = {}
-for _, i in pairs({"rainforest", "desert", "desertstone_grassland", }) do
+for _, i in pairs({"rainforest"}) do
 	ziggurat_biomes[i] = true
 end
 
