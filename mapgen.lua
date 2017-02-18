@@ -1,4 +1,4 @@
--- Ziggurat mapgen.lua
+-- zungle mapgen.lua
 -- Copyright Duane Robertson (duane@duanerobertson.com), 2017
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
@@ -22,7 +22,7 @@ local node = setmetatable({}, {
 
 
 local biome_ids = {}
-if true or zigg_mod.use_bi_hi then
+if true or zungle_mod.use_bi_hi then
 	-- Create a table of biome ids, so I can use the biomemap.
 	local get_biome_id = minetest.get_biome_id
 	for name, desc in pairs(minetest.registered_biomes) do
@@ -50,12 +50,12 @@ local function generate(p_minp, p_maxp, seed)
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 
-	if true or zigg_mod.use_bi_hi then
+	if true or zungle_mod.use_bi_hi then
 		heightmap = minetest.get_mapgen_object("heightmap")
 	end
 
   local biomemap
-  if true or zigg_mod.use_bi_hi then
+  if true or zungle_mod.use_bi_hi then
     biomemap = minetest.get_mapgen_object("biomemap")
   end
 
@@ -69,7 +69,7 @@ local function generate(p_minp, p_maxp, seed)
 		math.randomseed(seed)
 	end
 
-  local write = zigg_mod.ziggurat(minp, maxp, data, area, biomemap, biome_ids, node, heightmap)
+  local write = zungle_mod.zungle(minp, maxp, data, area, biomemap, biome_ids, node, heightmap)
 
   if write then
     vm:set_data(data)
@@ -86,8 +86,8 @@ local function generate(p_minp, p_maxp, seed)
 end
 
 
-if zigg_mod.path then
-	dofile(zigg_mod.path .. "/ziggurat.lua")
+if zungle_mod.path then
+	dofile(zungle_mod.path .. "/zungle.lua")
 end
 
 
